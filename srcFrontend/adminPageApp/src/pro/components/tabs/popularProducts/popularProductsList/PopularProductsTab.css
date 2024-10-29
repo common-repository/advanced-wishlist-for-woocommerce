@@ -1,0 +1,12 @@
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-menu .time-range-select {
+    margin: 10px;
+}
+
+.top-menu .search-product-input {
+    margin: 10px;
+}

@@ -1,0 +1,12 @@
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-menu .bulk-action-select {
+    margin: 10px;
+}
+
+.top-menu .search-wishlist-input {
+    margin: 10px;
+}

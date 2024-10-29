@@ -1,0 +1,79 @@
+textarea:focus,
+input[type=text]:focus {
+    border: none;
+    box-shadow: none;
+}
+
+input[type=text] {
+    padding: 16.5px 14px;
+        min-height: auto;
+}
+
+@media screen and (max-width: 782px) {
+    input[type=text] {
+        padding: 16.5px 14px;
+        min-height: auto;
+    }
+}
+
+.preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.email-preview {
+    flex-grow: 2;
+    position: relative;
+    margin-top: 45px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.preview-actions {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.send-email-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    padding: 0 20px;
+}
+
+.send-email-button-wrapper {
+    text-align: center;
+}
+
+.email-preview #wrapper {
+    padding: 0 !important;
+}
+
+.email-preview-wrapper {
+    pointer-events: none;
+}
+
+.email-preview.plain .email-preview-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    height: 100%;
+}
+
+.wc-coupons-select {
+    box-shadow: 0 0 25px -4px rgb(68 138 133 / 40%);
+    margin: 10px 10px 10px 0;
+    padding: 24px;
+}
+
+.wc-coupons-select input[type=text] {
+    border: none;
+}
+
+.send-email-spinner {
+    margin-top: 30px;
+    text-align: center;
+}

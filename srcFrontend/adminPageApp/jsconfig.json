@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "ApiClientLib/*": ["../apiClientLib/src/*"],
+      "ApiClient": ["src/apiClient.js"],
+      "AppConfig": ["src/appConfig.js"],
+      "Components/*": ["src/components/*"],
+      "BaseComponents/*": ["src/base/*"],
+      "ProComponents/*": ["src/pro/*"],
+      "Store/*": ["src/store/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

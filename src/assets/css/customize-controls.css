@@ -1,0 +1,48 @@
+.awl-icon-picker {
+    padding: 5px;
+    width: 240px;
+}
+.awl-icon-picker ul {
+    list-style-type: none;
+    padding: 5px;
+    margin: -1px 0 0;
+    display: none;
+    border: 1px solid #000;
+}
+.awl-icon-picker li {
+    display: inline-block;
+}
+.awl-icon-picker a {
+    display: inline-block;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 5px;
+    color: #777;
+    position: relative;
+}
+.awl-icon-picker a.open {
+    border-bottom-color: #fff;
+    color: #000;
+}
+.awl-icon-picker a .arr {
+    float: right;
+}
+.awl-icon-picker .visuallyhidden {
+    display: none;
+}
+.awl-icon-picker label {
+    display: inline-block;
+    padding: 4px;
+    cursor: pointer;
+    color: #777;
+    border: 1px solid transparent;
+}
+.awl-icon-picker label:hover {
+    color: #000;
+}
+.awl-icon-picker :checked + label {
+    color: #000;
+    border-color: #000;
+}
+

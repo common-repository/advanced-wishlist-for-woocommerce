@@ -1,0 +1,2835 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Algol WC Wishlist",
+        "description": "Algol WC Wishlist",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/wp-json/algol-wishlist/v1",
+            "description": "HTTP Wishlist plugin API server"
+        },
+        {
+            "url": "https://localhost/wp-json/algol-wishlist/v1",
+            "description": "HTTPS Wishlist plugin API server"
+        }
+    ],
+    "paths": {
+        "/admin/wishlists/{wishlistId}/items/{itemId}": {
+            "get": {
+                "tags": [
+                    "Admin items of wishlist"
+                ],
+                "operationId": "adminGetItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "ID of item from wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemOfWishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin items of wishlist"
+                ],
+                "operationId": "adminDeleteItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "ID of item from wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/wishlists/{wishlistId}/items": {
+            "get": {
+                "tags": [
+                    "Admin items of wishlist"
+                ],
+                "operationId": "adminGetAllItemOfWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ExtendedItemOfWishlist"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Admin items of wishlist"
+                ],
+                "operationId": "adminUpdateItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "A wishlist item object that needs to be updated",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemOfWishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Admin items of wishlist"
+                ],
+                "operationId": "adminAddItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "A wishlist item object that needs to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemOfWishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/wishlists/popular-items": {
+            "post": {
+                "tags": [
+                    "Admin popular products"
+                ],
+                "operationId": "adminGetPopularProducts",
+                "requestBody": {
+                    "description": "Fetch request body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetPopularItemsRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PopularItemsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/wishlists/popular-items/users": {
+            "post": {
+                "tags": [
+                    "Admin popular products"
+                ],
+                "operationId": "adminGetUsersOfPopularItem",
+                "requestBody": {
+                    "description": "Fetch request body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GetUsersOfPopularItemRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UsersOfPopularItemResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/wishlists/popular-items/users/file": {
+            "post": {
+                "tags": [
+                    "Admin popular products"
+                ],
+                "operationId": "adminGetUsersOfPopularItemAsFile",
+                "requestBody": {
+                    "description": "Fetch request body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "productId": {
+                                        "type": "integer"
+                                    },
+                                    "variation": {
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "text/csv": {}
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/promotional-email/preview": {
+            "post": {
+                "tags": [
+                    "Admin promotional email"
+                ],
+                "operationId": "adminPreviewPromotionalEmail",
+                "requestBody": {
+                    "description": "Email body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PromotionalEmailPreviewRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "preview": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/promotional-email/save-draft": {
+            "post": {
+                "tags": [
+                    "Admin promotional email"
+                ],
+                "operationId": "adminSaveDraftPromotionalEmail",
+                "requestBody": {
+                    "description": "Email body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PromotionalEmailRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/promotional-email/calculate-email-receivers": {
+            "post": {
+                "tags": [
+                    "Admin promotional email"
+                ],
+                "operationId": "admincalculateEmailReceiversPromotionalEmail",
+                "requestBody": {
+                    "description": "Body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PromotionalEmailCalculateEmailReceiversRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "count": {
+                                            "type": "integer"
+                                        },
+                                        "label": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/promotional-email/send": {
+            "post": {
+                "tags": [
+                    "Admin promotional email"
+                ],
+                "operationId": "adminSendPromotionalEmail",
+                "requestBody": {
+                    "description": "Email body",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PromotionalEmailRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "result": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/settings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Get all settings",
+                "operationId": "getAllSettings",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Option"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "description": "Update settings",
+                "operationId": "updateAllSettings",
+                "requestBody": {
+                    "description": "Options",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Option"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/wcCoupons": {
+            "get": {
+                "tags": [
+                    "Admin WC Coupons"
+                ],
+                "description": "Returns coupons based on query",
+                "operationId": "adminGetWcCoupons",
+                "parameters": [
+                    {
+                        "name": "term",
+                        "in": "query",
+                        "description": "Limit results to those matching a string",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Maximum number of items to be returned in result set",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "list": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/WcCoupon"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/wishlists": {
+            "get": {
+                "tags": [
+                    "Admin Wishlists"
+                ],
+                "description": "Get all wishlists for admin",
+                "operationId": "adminGetAllWishlists",
+                "parameters": [
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Sort field",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sort modifier: DESC or ASC",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "itemsPerPage",
+                        "in": "query",
+                        "description": "Maximum number of items to be returned in result set",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AdminGetWishlistsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Admin Wishlists"
+                ],
+                "description": "Update the wishlist as admin",
+                "operationId": "adminUpdateWishlist",
+                "requestBody": {
+                    "description": "Wishlist object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WishlistAdminRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Admin Wishlists"
+                ],
+                "description": "Add a new wishlist as admin",
+                "operationId": "adminAddWishlist",
+                "requestBody": {
+                    "description": "Wishlist object that needs to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WishlistAdminRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/admin/wishlists/{wishlistId}": {
+            "get": {
+                "tags": [
+                    "Admin Wishlists"
+                ],
+                "description": "Returns a single wishlist for admin",
+                "operationId": "adminGetWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Admin Wishlists"
+                ],
+                "description": "Delete the wishlist as admin",
+                "operationId": "adminDeleteWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}/items/{itemId}": {
+            "get": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "getItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "ID of item from wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemOfWishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "deleteItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "ID of item from wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}/items": {
+            "get": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "getAllItemOfWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ExtendedItemOfWishlist"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "updateItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "A wishlist item object that needs to be updated",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemOfWishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "addItemOfWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "A wishlist item object that needs to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ItemOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemOfWishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/default/items": {
+            "post": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "addItemIntoDefaultWishlist",
+                "requestBody": {
+                    "description": "A wishlist item object that needs to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddIntoDefaultWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ItemOfWishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/default/items/{itemId}": {
+            "delete": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "deleteItemOfDefaultWishlistById",
+                "parameters": [
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "ID of item from wishlist to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}/items/action/reorder": {
+            "post": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "ReorderItemsOfWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "An action object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ReorderItemsOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExecuteActionsOnItemsOfWishlistResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}/items/action/batch-delete": {
+            "post": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "BatchDeleteItemsOfWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "An action object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BatchDeleteItemsOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExecuteActionsOnItemsOfWishlistResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}/items/action/batch-add-to-cart": {
+            "post": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "BatchAddToCartItemsOfWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "An action object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BatchAddToCartItemsOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExecuteActionsOnItemsOfWishlistResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}/items/{itemId}/action/add-to-cart": {
+            "post": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "AddToCartItemOfWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "itemId",
+                        "in": "path",
+                        "description": "ID of item from wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "An action object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddToCartItemOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExecuteActionsOnItemsOfWishlistResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}/items/action/add-to-cart-all": {
+            "post": {
+                "tags": [
+                    "Items of wishlist"
+                ],
+                "operationId": "addToCartAllItemsOfWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "An action object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddToCartAllItemsOfWishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ExecuteActionsOnItemsOfWishlistResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists": {
+            "get": {
+                "tags": [
+                    "Wishlists"
+                ],
+                "description": "Get all wishlists",
+                "operationId": "getAllWishlists",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Wishlist"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Wishlists"
+                ],
+                "description": "Update the wishlist",
+                "operationId": "updateWishlist",
+                "requestBody": {
+                    "description": "Wishlist object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Wishlists"
+                ],
+                "description": "Add a new wishlist",
+                "operationId": "addWishlist",
+                "requestBody": {
+                    "description": "Wishlist object that needs to be added",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WishlistRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        },
+        "/wishlists/{wishlistId}": {
+            "get": {
+                "tags": [
+                    "Wishlists"
+                ],
+                "description": "Returns a single wishlist",
+                "operationId": "getWishlistById",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Wishlist"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Wishlists"
+                ],
+                "description": "Delete the wishlist",
+                "operationId": "deleteWishlist",
+                "parameters": [
+                    {
+                        "name": "wishlistId",
+                        "in": "path",
+                        "description": "ID of wishlist to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AddIntoDefaultWishlistRequest": {
+                "title": "AddIntoDefaultWishlistRequest",
+                "properties": {
+                    "productId": {
+                        "title": "Product id",
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "title": "Quantity",
+                        "type": "integer"
+                    },
+                    "variation": {
+                        "title": "Variation",
+                        "type": "object"
+                    },
+                    "cartItemData": {
+                        "title": "Cart item data",
+                        "type": "object"
+                    },
+                    "priority": {
+                        "title": "Priority",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "AddToCartAllItemsOfWishlistRequest": {
+                "title": "AddToCartAllItemsOfWishlistRequest",
+                "properties": {
+                    "deleteAddedToCart": {
+                        "title": "Delete items that have been added to the cart",
+                        "type": "boolean"
+                    },
+                    "withWcNotices": {
+                        "title": "Show WC notices",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "AddToCartItemOfWishlistRequest": {
+                "title": "AddToCartItemOfWishlistRequest",
+                "properties": {
+                    "deleteAddedToCart": {
+                        "title": "Delete item if it has been added to the cart",
+                        "type": "boolean"
+                    },
+                    "withWcNotices": {
+                        "title": "Show WC notices",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "AdminGetWishlistsElement": {
+                "title": "AdminGetWishlistsElement",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "token": {
+                        "title": "Token",
+                        "type": "string"
+                    },
+                    "owner": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "shareTypeId": {
+                        "title": "Share type Id",
+                        "type": "integer"
+                    },
+                    "dateCreated": {
+                        "title": "Date of creation",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "itemsCount": {
+                        "title": "Total count of items in the wishlist",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "AdminGetWishlistsResponse": {
+                "title": "AdminGetWishlistsResponse",
+                "properties": {
+                    "items": {
+                        "title": "Items",
+                        "description": "AdminGetWishlistsElement>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AdminGetWishlistsElement"
+                        }
+                    },
+                    "total": {
+                        "title": "Total items count",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "BatchAddToCartItemsOfWishlistRequest": {
+                "title": "BatchAddToCartItemsOfWishlistRequest",
+                "properties": {
+                    "itemIds": {
+                        "title": "Message",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "deleteAddedToCart": {
+                        "title": "Delete items that have been added to the cart",
+                        "type": "boolean"
+                    },
+                    "withWcNotices": {
+                        "title": "Show WC notices",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "BatchDeleteItemsOfWishlistRequest": {
+                "title": "BatchDeleteItemsOfWishlistRequest",
+                "properties": {
+                    "itemIds": {
+                        "title": "Message",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "BulkActionMessage": {
+                "title": "BulkActionMessage",
+                "properties": {
+                    "type": {
+                        "title": "Message type",
+                        "type": "string"
+                    },
+                    "entityId": {
+                        "title": "Entity Id",
+                        "type": "integer"
+                    },
+                    "entityTitle": {
+                        "title": "Entity title",
+                        "type": "string"
+                    },
+                    "code": {
+                        "title": "Code",
+                        "type": "string"
+                    },
+                    "message": {
+                        "title": "Message",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Date": {
+                "title": "Date",
+                "properties": {
+                    "date": {
+                        "title": "Date",
+                        "type": "string"
+                    },
+                    "timezone": {
+                        "title": "Timezone code",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Error": {
+                "title": "Error",
+                "properties": {
+                    "code": {
+                        "title": "Code",
+                        "type": "string"
+                    },
+                    "message": {
+                        "title": "Message",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ExecuteActionsOnItemsOfWishlistRequest": {
+                "title": "ExecuteActionsOnItemsOfWishlistRequest",
+                "properties": {
+                    "action": {
+                        "title": "Action",
+                        "type": "string"
+                    },
+                    "itemIds": {
+                        "title": "Message",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "options": {
+                        "title": "Options for action",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "ExecuteActionsOnItemsOfWishlistResponse": {
+                "title": "ExecuteActionsOnItemsOfWishlistResponse",
+                "properties": {
+                    "messages": {
+                        "title": "List of errors",
+                        "description": "BulkActionMessage|Error>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/BulkActionMessage"
+                        }
+                    },
+                    "newItems": {
+                        "title": "Items after executing action",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ExtendedItemOfWishlist"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "ExtendedItemOfWishlist": {
+                "title": "ExtendedItemOfWishlist",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "productId": {
+                        "title": "Product id",
+                        "type": "integer"
+                    },
+                    "parentId": {
+                        "title": "Parent id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Type of product",
+                        "type": "string"
+                    },
+                    "virtualProduct": {
+                        "title": "Is a virtual product",
+                        "type": "boolean"
+                    },
+                    "downloadable": {
+                        "title": "Is downloadable",
+                        "type": "boolean"
+                    },
+                    "sku": {
+                        "title": "SKU",
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "title": "Quantity",
+                        "type": "integer"
+                    },
+                    "priority": {
+                        "title": "Priority",
+                        "type": "integer"
+                    },
+                    "variation": {
+                        "title": "Variation",
+                        "type": "object"
+                    },
+                    "cartItemData": {
+                        "title": "Cart item data",
+                        "type": "object"
+                    },
+                    "createdAt": {
+                        "title": "Date of creation",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "permalink": {
+                        "title": "Permalink",
+                        "type": "string"
+                    },
+                    "thumbnail": {
+                        "$ref": "#/components/schemas/Thumbnail"
+                    },
+                    "stock": {
+                        "$ref": "#/components/schemas/Stock"
+                    },
+                    "price": {
+                        "$ref": "#/components/schemas/Price"
+                    },
+                    "addToCart": {
+                        "$ref": "#/components/schemas/AddToCart"
+                    }
+                },
+                "type": "object"
+            },
+            "GetPopularItemsRequest": {
+                "title": "GetPopularItemsRequest",
+                "properties": {
+                    "timeRange": {
+                        "title": "Time range",
+                        "type": "string"
+                    },
+                    "searchByText": {
+                        "title": "Serach text",
+                        "type": "string"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/Pagination"
+                    },
+                    "sorting": {
+                        "title": "Items",
+                        "description": "Sorting>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Sorting"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "GetUsersOfPopularItemRequest": {
+                "title": "GetUsersOfPopularItemRequest",
+                "properties": {
+                    "productId": {
+                        "title": "Product id",
+                        "type": "integer"
+                    },
+                    "variation": {
+                        "title": "Variation",
+                        "type": "object"
+                    },
+                    "pagination": {
+                        "$ref": "#/components/schemas/Pagination"
+                    },
+                    "sorting": {
+                        "title": "Items",
+                        "description": "Sorting>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Sorting"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "ItemOfWishlist": {
+                "title": "ItemOfWishlist",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "wishlistId": {
+                        "title": "Wishlist id",
+                        "type": "integer"
+                    },
+                    "productId": {
+                        "title": "Product id",
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "title": "Quantity",
+                        "type": "integer"
+                    },
+                    "variation": {
+                        "title": "Variation",
+                        "type": "object"
+                    },
+                    "cartItemData": {
+                        "title": "Cart item data",
+                        "type": "object"
+                    },
+                    "createdAt": {
+                        "title": "Date of creation",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "priority": {
+                        "title": "Priority",
+                        "type": "integer"
+                    },
+                    "wishlistUrl": {
+                        "title": "Wishlist URL",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AddToCart": {
+                "title": "AddToCart",
+                "properties": {
+                    "text": {
+                        "title": "Text",
+                        "type": "string"
+                    },
+                    "url": {
+                        "title": "Url",
+                        "type": "string"
+                    },
+                    "requiresSelection": {
+                        "title": "Requires selection before adding to cart",
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "Price": {
+                "title": "Price",
+                "properties": {
+                    "unitPrice": {
+                        "title": "Unit price",
+                        "type": "number"
+                    },
+                    "minPrice": {
+                        "title": "Min price",
+                        "type": "string"
+                    },
+                    "minPriceValue": {
+                        "title": "Min price value",
+                        "type": "number"
+                    },
+                    "maxPrice": {
+                        "title": "Max price",
+                        "type": "string"
+                    },
+                    "maxPriceValue": {
+                        "title": "Max price value",
+                        "type": "number"
+                    },
+                    "priceHtml": {
+                        "title": "Price html",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Stock": {
+                "title": "Stock",
+                "properties": {
+                    "availability": {
+                        "$ref": "#/components/schemas/StockAvailability"
+                    }
+                },
+                "type": "object"
+            },
+            "StockAvailability": {
+                "title": "StockAvailability",
+                "properties": {
+                    "text": {
+                        "title": "Availability text based on stock status",
+                        "type": "string"
+                    },
+                    "stockClass": {
+                        "title": "Availability classname based on stock status",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Thumbnail": {
+                "title": "Thumbnail",
+                "properties": {
+                    "previewUrl": {
+                        "title": "Preview url",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ItemOfWishlistRequest": {
+                "title": "ItemOfWishlistRequest",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "wishlistId": {
+                        "title": "Wishlist id",
+                        "type": "integer"
+                    },
+                    "productId": {
+                        "title": "Product id",
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "title": "Quantity",
+                        "type": "integer"
+                    },
+                    "variation": {
+                        "title": "Variation",
+                        "type": "object"
+                    },
+                    "cartItemData": {
+                        "title": "Cart item data",
+                        "type": "object"
+                    },
+                    "priority": {
+                        "title": "Priority",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Option": {
+                "title": "Option",
+                "properties": {
+                    "type": {
+                        "title": "Type",
+                        "type": "string"
+                    },
+                    "id": {
+                        "title": "Id",
+                        "type": "string"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "defaultValue": {
+                        "title": "Default value"
+                    },
+                    "value": {
+                        "title": "Value"
+                    },
+                    "selections": {
+                        "title": "Selections",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "value": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "customizeUrls": {
+                        "title": "Customizer url",
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Pagination": {
+                "title": "Pagination",
+                "properties": {
+                    "perPage": {
+                        "title": "Count of items per page",
+                        "type": "integer"
+                    },
+                    "currentPage": {
+                        "title": "Current page",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "PopularItemsResponse": {
+                "title": "PopularItemsResponse",
+                "properties": {
+                    "items": {
+                        "title": "Items",
+                        "description": "PopularItem>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/PopularItem"
+                        }
+                    },
+                    "total": {
+                        "title": "Total items count",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "CategoryOfPopularItem": {
+                "title": "CategoryOfPopularItem",
+                "properties": {
+                    "id": {
+                        "title": "Product id",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PopularItem": {
+                "title": "PopularItem",
+                "properties": {
+                    "id": {
+                        "title": "Product id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "variation": {
+                        "title": "Variation",
+                        "type": "object"
+                    },
+                    "cartItemData": {
+                        "title": "Cart item data",
+                        "type": "object"
+                    },
+                    "categories": {
+                        "title": "Categories",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CategoryOfPopularItem"
+                        }
+                    },
+                    "totalCount": {
+                        "title": "Count of items",
+                        "type": "integer"
+                    },
+                    "link": {
+                        "title": "Link to product",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Product": {
+                "title": "Product",
+                "properties": {
+                    "productId": {
+                        "title": "Product Id",
+                        "type": "number"
+                    },
+                    "variation": {
+                        "title": "Variation",
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "PromotionalEmailCalculateEmailReceiversRequest": {
+                "title": "PromotionalEmailCalculateEmailReceiversRequest",
+                "properties": {
+                    "products": {
+                        "title": "Product Id",
+                        "description": "Product>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Product"
+                        }
+                    },
+                    "userIds": {
+                        "title": "User Ids",
+                        "description": "int>",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "PromotionalEmailPreviewRequest": {
+                "title": "PromotionalEmailPreviewRequest",
+                "properties": {
+                    "type": {
+                        "title": "Type ('html' or 'plain')",
+                        "type": "string"
+                    },
+                    "htmlContent": {
+                        "title": "Content",
+                        "type": "string"
+                    },
+                    "plainContent": {
+                        "title": "Plain content",
+                        "type": "string"
+                    },
+                    "product": {
+                        "$ref": "#/components/schemas/Product"
+                    },
+                    "userId": {
+                        "title": "User Id",
+                        "type": "number"
+                    },
+                    "coupon": {
+                        "title": "Coupon",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "PromotionalEmailRequest": {
+                "title": "PromotionalEmailRequest",
+                "properties": {
+                    "type": {
+                        "title": "Type ('html' or 'plain')",
+                        "type": "string"
+                    },
+                    "htmlContent": {
+                        "title": "Content",
+                        "type": "string"
+                    },
+                    "plainContent": {
+                        "title": "Plain content",
+                        "type": "string"
+                    },
+                    "products": {
+                        "title": "Product Id",
+                        "description": "Product>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Product"
+                        }
+                    },
+                    "userIds": {
+                        "title": "User Ids",
+                        "description": "int>",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "coupon": {
+                        "title": "Coupon",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ReorderItemsOfWishlistRequest": {
+                "title": "ReorderItemsOfWishlistRequest",
+                "properties": {
+                    "itemIds": {
+                        "title": "Message",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Sorting": {
+                "title": "Sorting",
+                "properties": {
+                    "field": {
+                        "title": "Field",
+                        "type": "string"
+                    },
+                    "sort": {
+                        "title": "Modifier: DESC or ASC",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "title": "User",
+                "properties": {
+                    "id": {
+                        "title": "Owner id",
+                        "type": "integer"
+                    },
+                    "username": {
+                        "title": "Username",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UserOfPopularItem": {
+                "title": "UserOfPopularItem",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "thumbnailUrl": {
+                        "title": "Thumbnail url",
+                        "type": "string"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "addedOn": {
+                        "title": "Date of creation",
+                        "type": "string",
+                        "format": "date"
+                    }
+                },
+                "type": "object"
+            },
+            "UsersOfPopularItemResponse": {
+                "title": "UsersOfPopularItemResponse",
+                "properties": {
+                    "items": {
+                        "title": "Items",
+                        "description": "UserOfPopularItem>",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/UserOfPopularItem"
+                        }
+                    },
+                    "total": {
+                        "title": "Total items count",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "WcCoupon": {
+                "title": "WcCoupon",
+                "properties": {
+                    "code": {
+                        "title": "Code",
+                        "type": "string"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Wishlist": {
+                "title": "Wishlist",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "token": {
+                        "title": "Token",
+                        "type": "string"
+                    },
+                    "owner": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "shareTypeId": {
+                        "title": "Share type Id",
+                        "type": "integer"
+                    },
+                    "dateCreated": {
+                        "title": "Date of creation",
+                        "type": "string",
+                        "format": "date"
+                    }
+                },
+                "type": "object"
+            },
+            "WishlistAdminRequest": {
+                "title": "WishlistAdminRequest",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "ownerId": {
+                        "title": "Owner Id",
+                        "type": "integer"
+                    },
+                    "shareTypeId": {
+                        "title": "Share type Id",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "WishlistRequest": {
+                "title": "WishlistRequest",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "title": "Title",
+                        "type": "string"
+                    },
+                    "shareTypeId": {
+                        "title": "Share type Id",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "apiKey": {
+                "type": "apiKey",
+                "name": "X-WP-Nonce",
+                "in": "header"
+            }
+        }
+    }
+}

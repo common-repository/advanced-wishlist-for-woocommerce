@@ -1,0 +1,23 @@
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-menu .time-range-select {
+    margin: 10px 0;
+    background-color: white;
+}
+
+.top-menu .search-product-input {
+    margin: 10px 0;
+    background-color: white;
+}
+
+.MuiDataGrid-columnHeader {
+    font-weight: 600;
+    background-color: rgb(224,224,224);
+}
+
+.MuiDataGrid-cellContent {
+    font-size: 1em;
+}

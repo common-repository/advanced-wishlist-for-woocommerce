@@ -1,0 +1,72 @@
+.App {
+    text-align: center;
+}
+
+#root input[type='search'] {
+    padding: 25px 12px 8px;
+    line-height: inherit;
+    min-height:auto;
+    border: 0;
+    background: none;
+    color: currentColor;
+}
+
+#root input[type='checkbox'] {
+    cursor: inherit;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-float infinite 3s ease-in-out;
+    }
+}
+
+.App-header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+    color: rgb(112, 76, 182);
+}
+
+@keyframes App-logo-float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.license_paragraph {
+    margin : 15px 0 15px 0;
+}
+
+#license_help_text {
+    background-color: white;
+    border: 1px #b2b2b2 solid;
+    border-radius: 5px;
+    padding:10px;
+    margin: 15px 0 15px 0;
+}
+
+.tabs-panel .MuiTab-root {
+    font-weight: 600;
+}
